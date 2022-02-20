@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  ts:
+    image: tensorflow/serving:2.3.0
+    ports:
+      - 127.0.0.1:8500:8500 # gRPC Port
+      - 127.0.0.1:8501:8501 # HTTP Port
+    volumes:
+      - ./clothing-model:/models/clothing-model/1
+    environment:
+      - MODEL_NAME=clothing-model
